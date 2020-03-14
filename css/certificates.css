@@ -11,11 +11,12 @@
   margin-top: 15px;
   margin-bottom: 15px;
 }
-
-/* .img-thumbnail{
-  height: 250px;
-
-} */
+h2{
+  
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 200;
+  margin: 0 0 20px 0;
+}
 
 .img-thumbnail{
   height:260px;
