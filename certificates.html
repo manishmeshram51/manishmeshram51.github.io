@@ -65,7 +65,7 @@
 			}
 		}
 		
-		@media screen and (max-width: 480px) {
+		@media screen and (max-width: 800px) {
 			.prev {
 				display: none;
 			}
@@ -506,9 +506,16 @@
 			e.preventDefault(); // prevent the default action (scroll / move caret)
 		});
 
-		if($(window).width() >= 1024){
+		// if($(window).width() >= 1024){
    
-		var start = 0;
+		
+		// };
+		if($(window).width() <= 800){
+			var list = $('.img-list .hvrbox');
+			list.show();
+		}
+		else{
+			var start = 0;
 		var nb = 6;
 		var end = start + nb;
 		var length = $('.img-list .hvrbox').length;
@@ -533,10 +540,6 @@
 			if (start == 0) list.hide().filter(':lt(' + (end) + ')').show();
 			else list.hide().filter(':lt(' + (end) + '):gt(' + (start - 1) + ')').show();
 		});
-		};
-		if($(window).width() >= 480){
-			var list = $('.img-list .hvrbox');
-			list.show();
 		}
 
 	</script>
