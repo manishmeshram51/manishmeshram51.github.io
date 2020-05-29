@@ -19,8 +19,9 @@ h2{
 }
 
 .img-thumbnail{
-  height:260px;
-  width:100%;
+	height:220px;
+	/* height:260px; */
+	width:100%;
 }
 .thumb:hover {
   -webkit-box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.75);
@@ -91,3 +92,5 @@ h2{
 .hvrbox.active .hvrbox-text_mobile {
 	display: block;
 }
+
+
