@@ -64,16 +64,15 @@
 				animation: octocat-wave 560ms ease-in-out
 			}
 		}
-
-		img {
-			display: block;
-		}
-
-		@media screen and (min-width: 480px) {
-			.img-list .hrrbox img {
-				display: block !important;
+		
+		@media screen and (max-width: 480px) {
+			.prev {
+				display: none;
 			}
 
+			.next {
+				display: none;
+			}
 		}
 	</style>
 
@@ -387,8 +386,8 @@
 				</div>
 				<hr>
 				<div class="col-lg-12 ">
-					<a class="btn btn-primary float-left prev" href="#">&larr; Prev </a>
-					<a class="btn btn-primary float-right next" href="#">Next &rarr;</a>
+					<a class="btn btn-secondary float-left prev" href="#">&larr; Prev </a>
+					<a class="btn btn-secondary float-right next" href="#">Next &rarr;</a>
 				</div>
 				<br>
 				<br>
@@ -433,14 +432,12 @@
 
 			//This function disables buttons when needed
 			function disableButtons(counter_max, counter_current) {
-				$('#show-previous-image, #show-next-image')
-					.show();
+				$('#show-previous-image, #show-next-image').show();
 				if (counter_max === counter_current) {
-					$('#show-next-image')
-						.hide();
-				} else if (counter_current === 1) {
-					$('#show-previous-image')
-						.hide();
+					$('#show-next-image').hide();
+				} 
+				else if (counter_current === 1) {
+					$('#show-previous-image').hide();
 				}
 			}
 
@@ -456,10 +453,10 @@
 					counter = 0;
 
 				$('#show-next-image, #show-previous-image').click(function () {
-					if ($(this)
-						.attr('id') === 'show-previous-image') {
+					if ($(this).attr('id') === 'show-previous-image') {
 						current_image--;
-					} else {
+					} 
+					else {
 						current_image++;
 					}
 
@@ -470,10 +467,8 @@
 				function updateGallery(selector) {
 					let $sel = selector;
 					current_image = $sel.data('image-id');
-					$('#image-gallery-title')
-						.text($sel.data('title'));
-					$('#image-gallery-image')
-						.attr('src', $sel.data('image'));
+					$('#image-gallery-title').text($sel.data('title'));
+					$('#image-gallery-image').attr('src', $sel.data('image'));
 					disableButtons(counter, $sel.data('image-id'));
 				}
 
@@ -481,8 +476,7 @@
 					$('[data-image-id]')
 						.each(function () {
 							counter++;
-							$(this)
-								.attr('data-image-id', counter);
+							$(this).attr('data-image-id', counter);
 						});
 				}
 				$(setClickAttr).on('click', function () {
@@ -496,15 +490,13 @@
 			switch (e.which) {
 				case 37: // left
 					if ((modalId.data('bs.modal') || {})._isShown && $('#show-previous-image').is(":visible")) {
-						$('#show-previous-image')
-							.click();
+						$('#show-previous-image').click();
 					}
 					break;
 
 				case 39: // right
 					if ((modalId.data('bs.modal') || {})._isShown && $('#show-next-image').is(":visible")) {
-						$('#show-next-image')
-							.click();
+						$('#show-next-image').click();
 					}
 					break;
 
@@ -514,6 +506,8 @@
 			e.preventDefault(); // prevent the default action (scroll / move caret)
 		});
 
+		if($(window).width() >= 1024){
+   
 		var start = 0;
 		var nb = 6;
 		var end = start + nb;
@@ -539,6 +533,12 @@
 			if (start == 0) list.hide().filter(':lt(' + (end) + ')').show();
 			else list.hide().filter(':lt(' + (end) + '):gt(' + (start - 1) + ')').show();
 		});
+		};
+		if($(window).width() >= 480){
+			var list = $('.img-list .hvrbox');
+			list.show();
+		}
+
 	</script>
 </body>
 
